@@ -1,0 +1,22 @@
+<div>
+    <h1 i18n>Profile</h1>
+    <div>
+        <p>Username: <span *ngIf="!!user&&!!user.username">{{user.username}}</span></p>
+    </div>
+    <div>
+        <p>Email: <span *ngIf="!!user&&!!user.email">{{user.email}}</span></p>
+    </div>
+    <div>
+        <label>First Name:</label>
+        <input type="text" placeholder="{{firstNamePlaceholder}}" [disabled]="isLoading" [(ngModel)]="formFirstName" (keypress)="clearError()"/>
+    </div>
+    <div>
+        <label>Last Name:</label><input type="text" placeholder="{{lastNamePlaceholder}}" [disabled]="isLoading" [(ngModel)]="formLastName" (keypress)="clearError()"/>
+    </div>
+    <div>
+        <input type="button" value="Save" [disabled]="isLoading" (click)="saveProfile()"/>
+    </div>
+    <p *ngIf="isLoading">Loading profile...</p>
+    <p *ngIf="isSaving">Saving profile...</p>
+    <p *ngIf="!!error&&!isSaving">Error! {{error}}</p>
+</div>
